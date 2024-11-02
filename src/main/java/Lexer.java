@@ -1,3 +1,5 @@
+package main.java;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -9,6 +11,7 @@ public class Lexer {
     // Definir los patrones regex para los diferentes tipos de tokens
     private static final String COMMENT_MULTI = "/\\*[^*]*\\*+(?:[^/*][^*]*\\*+)*/";
     private static final String COMMENT_SINGLE = "//[^\\n]*";
+    //private static final String KEYWORDS = "\\b(long|double|if|then|else|while|break|read|write)\\b";
     private static final String KEYWORDS = "\\b(long|double|if|then|else|while|break|read|write)\\b";
     private static final String OPERATORS = "[+\\-*/><=]|(>=|<=|==|!=|<>)";
     private static final String IDENTIFIERS = "\\b_[a-zA-Z]+\\b";

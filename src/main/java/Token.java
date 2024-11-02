@@ -1,3 +1,5 @@
+package main.java;
+
 public class Token { //Analesis Lexico
     private TokenType type;
     private String value;
@@ -17,7 +19,7 @@ public class Token { //Analesis Lexico
 
     @Override
     public String toString() {
-        return "Token{" + "type=" + type + ", value='" + value + '\'' + '}';
+        return "main.java.Token{" + "type=" + type + ", value='" + value + '\'' + '}';
     }
 }
 

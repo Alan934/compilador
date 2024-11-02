@@ -1,10 +1,12 @@
+package main.java;
+
 public class Main {
     public static void main(String[] args) {
         // Ejemplo de código de entrada para el compilador
         String inputCode = "/* Ejemplo */ long _var = 10; // Comentario en una línea\n" +
                 "if (_var >= 10) { write(_var); }";
 
-        // Crear instancias del Lexer y Parser
+        // Crear instancias del main.java.Lexer y main.java.Parser
         Lexer lexer = new Lexer();
         Parser parser = new Parser();
 
