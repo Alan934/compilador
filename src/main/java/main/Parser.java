@@ -1,8 +1,9 @@
-package main.java;
+package main;
 
 import java.util.List;
 
 public class Parser {
+    private boolean inLoopContext = false; // Nueva variable para controlar el contexto de bucle
 
     public void parse(List<Token> tokens) { // Análisis sintáctico
         int index = 0;
@@ -68,23 +69,67 @@ public class Parser {
 
 
     private int parseWhileStatement(List<Token> tokens, int index) {
-        System.out.println("Reconociendo una declaración 'while' en el token " + tokens.get(index).getValue());
-        // Implementación de análisis detallado de la declaración while
-        return index + 1;
+        if (tokens.size() <= index + 1 || !tokens.get(index + 1).getValue().equals("(")) {
+            throw new RuntimeException("Error: Se esperaba '(' después de 'while'.");
+        }
+        // Buscar el paréntesis de cierre
+        int closingParenIndex = index + 1;
+        while (closingParenIndex < tokens.size() && 
+               !(tokens.get(closingParenIndex).getType() == TokenType.PARENTHESIS && 
+                 tokens.get(closingParenIndex).getValue().equals(")"))) {
+            closingParenIndex++;
+        }
+        if (closingParenIndex >= tokens.size()) {
+            throw new RuntimeException("Error: Se esperaba ')' para cerrar la condición de 'while'.");
+        }
+        // Comprobar el siguiente token después de ')'
+        if (closingParenIndex + 1 >= tokens.size() || 
+            !tokens.get(closingParenIndex + 1).getValue().equals("{")) {
+            throw new RuntimeException("Error: Se esperaba '{' después de la condición de 'while'.");
+        }
+        return closingParenIndex + 2; // Moverse más allá del '{' después del bloque while
     }
 
     private int parseAssignment(List<Token> tokens, int index) {
-        System.out.println("Reconociendo una asignación para " + tokens.get(index).getValue());
-        // Implementación del análisis de asignación
-        return index + 1;
-    }
+        // Verificar que hay suficientes tokens para una asignación
+        if (tokens.size() <= index + 2 || !tokens.get(index + 2).getValue().equals("=")) {
+            throw new RuntimeException("Error: Se esperaba un '=' para la asignación.");
+        }
+    
+        // Comprobar el tipo del token antes del '='
+        if (tokens.get(index + 1).getType() == TokenType.OPERATOR) {
+            throw new RuntimeException("Error: Operador inesperado en la asignación.");
+        }
+    
+        // Comprobar el valor asignado
+        if (tokens.size() <= index + 3 || 
+            (tokens.get(index + 3).getType() != TokenType.NUMBER && 
+             tokens.get(index + 3).getType() != TokenType.IDENTIFIER)) {
+            throw new RuntimeException("Error: Se esperaba un valor válido después de '='.");
+        }
+    
+        // Verificar si el siguiente token es un operador
+        if (tokens.size() > index + 4 && tokens.get(index + 4).getType() == TokenType.OPERATOR) {
+            throw new RuntimeException("Error: Operador inesperado después del valor asignado.");
+        }
+    
+        return index + 4; // Avanzar después del valor asignado
+    }    
 
     private int parseVariableDeclaration(List<Token> tokens, int index) {
         System.out.println("Reconociendo una declaración de variable con tipo " + tokens.get(index).getValue());
-
+        if (tokens.get(index + 1).getType() != TokenType.IDENTIFIER) {
+            throw new RuntimeException("Error: Se esperaba un identificador después del tipo de variable.");
+        }
+        if (tokens.get(index + 1).getType() != TokenType.IDENTIFIER) {
+            throw new RuntimeException("Error: Se esperaba un identificador válido después del tipo de variable.");
+        }
         // Asegurarse de que el siguiente token es un identificador
         if (tokens.get(index + 1).getType() == TokenType.IDENTIFIER) {
             System.out.println("Identificador: " + tokens.get(index + 1).getValue());
+            if (tokens.get(index + 1).getType() != TokenType.IDENTIFIER) {
+                throw new RuntimeException("Error: Se esperaba un identificador válido después del tipo de variable.");
+            }
             // Verificar si después viene un operador de asignación y un valor
             if (tokens.get(index + 2).getValue().equals("=")) {
                 System.out.println("Asignación de valor: " + tokens.get(index + 3).getValue());
@@ -95,7 +140,13 @@ public class Parser {
         } else {
             System.out.println("Error: Se esperaba un identificador después del tipo de variable.");
         }
-        return index + 1;
+        if (!tokens.get(index + 2).getValue().equals("=")) {
+            throw new RuntimeException("Error: Se esperaba un '=' para la asignación.");
+        }
+        if (tokens.size() <= index + 3 || tokens.get(index + 3).getType() != TokenType.NUMBER) {
+            throw new RuntimeException("Error: Se esperaba un número para la asignación.");
+        }
+        return index + 4;
     }
 
     private int parseIOStatement(List<Token> tokens, int index) {
@@ -129,8 +180,12 @@ public class Parser {
     }
 
     private int parseBreakStatement(List<Token> tokens, int index) {
+        if (!inLoopContext) {
+            throw new RuntimeException("Error: Palabra clave inesperada break"); // Eliminar el punto al final
+        }
         System.out.println("Reconociendo una declaración 'break'");
-        // Implementación del análisis para 'break'
-        return index + 1; // Avanzar después del 'break'
+        return index + 1;
     }
+    
+    
 }

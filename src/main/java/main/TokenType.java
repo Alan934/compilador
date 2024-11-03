@@ -1,4 +1,4 @@
-package main.java;
+package main;
 
 public enum TokenType {
     COMMENT_MULTI,

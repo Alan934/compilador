@@ -1,4 +1,4 @@
-package main.java;
+package main;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,8 @@ public class Lexer {
     //private static final String KEYWORDS = "\\b(long|double|if|then|else|while|break|read|write)\\b";
     private static final String KEYWORDS = "\\b(long|double|if|then|else|while|break|read|write)\\b";
     private static final String OPERATORS = "[+\\-*/><=]|(>=|<=|==|!=|<>)";
-    private static final String IDENTIFIERS = "\\b_[a-zA-Z]+\\b";
+//    private static final String IDENTIFIERS = "\\b_[a-zA-Z]+\\b";
+    private static final String IDENTIFIERS = "\\b_[a-zA-Z][a-zA-Z0-9]*\\b";
     private static final String NUMBERS = "\\b\\d+\\b";
     private static final String PARENTHESIS = "[()]";
     private static final String BRACES = "[{}]";

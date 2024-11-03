@@ -1,5 +1,5 @@
-main\java\TokenType.class
-main\java\Lexer.class
-main\java\Token.class
-main\java\Main.class
-main\java\Parser.class
+main\Token.class
+main\Lexer.class
+main\Main.class
+main\Parser.class
+main\TokenType.class
