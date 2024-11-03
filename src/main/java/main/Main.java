@@ -6,14 +6,13 @@ public class Main {
         String inputCode = "/* Ejemplo */ long _var = 10; // Comentario en una línea\n" +
                 "if (_var >= 10) { write(_var); }";
 
-        // Crear instancias del main.java.Lexer y main.java.Parser
         Lexer lexer = new Lexer();
         Parser parser = new Parser();
 
         // Tokenizar el código de entrada
         System.out.println("---- Tokens ----");
         lexer.tokenize(inputCode);
-        lexer.getTokens().forEach(System.out::println); // Imprimir los tokens
+        lexer.getTokens().forEach(System.out::println);
 
         // Analizar el código (análisis sintáctico)
         System.out.println("\n---- Análisis Sintáctico ----");

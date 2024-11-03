@@ -8,13 +8,11 @@ import java.util.regex.Pattern;
 public class Lexer {
     private List<Token> tokens = new ArrayList<>();
 
-    // Definir los patrones regex para los diferentes tipos de tokens
+    // Patrones regex para los diferentes tipos de tokens
     private static final String COMMENT_MULTI = "/\\*[^*]*\\*+(?:[^/*][^*]*\\*+)*/";
     private static final String COMMENT_SINGLE = "//[^\\n]*";
-    //private static final String KEYWORDS = "\\b(long|double|if|then|else|while|break|read|write)\\b";
     private static final String KEYWORDS = "\\b(long|double|if|then|else|while|break|read|write)\\b";
     private static final String OPERATORS = "[+\\-*/><=]|(>=|<=|==|!=|<>)";
-//    private static final String IDENTIFIERS = "\\b_[a-zA-Z]+\\b";
     private static final String IDENTIFIERS = "\\b_[a-zA-Z][a-zA-Z0-9]*\\b";
     private static final String NUMBERS = "\\b\\d+\\b";
     private static final String PARENTHESIS = "[()]";
@@ -26,7 +24,7 @@ public class Lexer {
             COMMENT_MULTI + "|" + COMMENT_SINGLE + "|" + KEYWORDS + "|" + IDENTIFIERS + "|" + OPERATORS + "|" +
                     NUMBERS + "|" + PARENTHESIS + "|" + BRACES + "|" + SEMICOLON);
 
-    // Método para tokenizar la entrada
+    // Tokenizar la entrada
     public void tokenize(String input) {
         Matcher matcher = TOKEN_PATTERNS.matcher(input);
 

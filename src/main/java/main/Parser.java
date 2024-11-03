@@ -3,7 +3,7 @@ package main;
 import java.util.List;
 
 public class Parser {
-    private boolean inLoopContext = false; // Nueva variable para controlar el contexto de bucle
+    private boolean inLoopContext = false; // Para controlar el contexto de bucle
 
     public void parse(List<Token> tokens) { // Análisis sintáctico
         int index = 0;
@@ -19,9 +19,9 @@ public class Parser {
                 } else if (token.getValue().equals("while")) {
                     index = parseWhileStatement(tokens, index);
                 } else if (token.getValue().equals("break")) {
-                    index = parseBreakStatement(tokens, index); // Nueva regla para break
+                    index = parseBreakStatement(tokens, index);
                 } else if (token.getValue().equals("write") || token.getValue().equals("read")) {
-                    index = parseIOStatement(tokens, index);  // Nueva regla para read/write
+                    index = parseIOStatement(tokens, index);
                 } else {
                     System.out.println("Error: Palabra clave inesperada " + token.getValue());
                 }
@@ -39,7 +39,6 @@ public class Parser {
         // Verificar si el siguiente token es '('
         if (tokens.size() > index + 1 && tokens.get(index + 1).getType() == TokenType.PARENTHESIS &&
                 tokens.get(index + 1).getValue().equals("(")) {
-
             // Verificar si el token de cierre de la condición es ')'
             int closingParenIndex = index + 1;
             while (closingParenIndex < tokens.size() &&
@@ -57,7 +56,6 @@ public class Parser {
             if (braceIndex < tokens.size() && tokens.get(braceIndex).getType() == TokenType.BRACE &&
                     tokens.get(braceIndex).getValue().equals("{")) {
                 System.out.println("Bloque 'if' reconocido.");
-                // Aquí podrías agregar lógica para analizar el contenido dentro del bloque
                 return braceIndex + 1; // Avanzar después del '{'
             } else {
                 throw new RuntimeException("Error: Se esperaba '{' después de la condición.");
@@ -87,7 +85,7 @@ public class Parser {
             !tokens.get(closingParenIndex + 1).getValue().equals("{")) {
             throw new RuntimeException("Error: Se esperaba '{' después de la condición de 'while'.");
         }
-        return closingParenIndex + 2; // Moverse más allá del '{' después del bloque while
+        return closingParenIndex + 2; // Moverse más del '{' después del bloque while
     }
 
     private int parseAssignment(List<Token> tokens, int index) {
@@ -181,7 +179,7 @@ public class Parser {
 
     private int parseBreakStatement(List<Token> tokens, int index) {
         if (!inLoopContext) {
-            throw new RuntimeException("Error: Palabra clave inesperada break"); // Eliminar el punto al final
+            throw new RuntimeException("Error: Palabra clave inesperada break");
         }
         System.out.println("Reconociendo una declaración 'break'");
         return index + 1;
