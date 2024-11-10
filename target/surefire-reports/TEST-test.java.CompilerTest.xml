@@ -1,56 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="test.java.CompilerTest" time="0.141" tests="14" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="test.java.CompilerTest" time="0.08" tests="14" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.class.path" value="D:\Proyectos\Proyectos Java\compilador\target\test-classes;D:\Proyectos\Proyectos Java\compilador\target\classes;C:\Users\Alan\.m2\repository\org\junit\jupiter\junit-jupiter\5.9.0\junit-jupiter-5.9.0.jar;C:\Users\Alan\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.0\junit-jupiter-api-5.9.0.jar;C:\Users\Alan\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Alan\.m2\repository\org\junit\platform\junit-platform-commons\1.9.0\junit-platform-commons-1.9.0.jar;C:\Users\Alan\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Alan\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.9.0\junit-jupiter-params-5.9.0.jar;C:\Users\Alan\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.0\junit-jupiter-engine-5.9.0.jar;C:\Users\Alan\.m2\repository\org\junit\platform\junit-platform-engine\1.9.0\junit-platform-engine-1.9.0.jar;"/>
+    <property name="java.class.path" value="D:\Proyectos\Proyectos java\compilador\target\test-classes;D:\Proyectos\Proyectos java\compilador\target\classes;C:\Users\MegaTecnologia\.m2\repository\org\junit\jupiter\junit-jupiter\5.9.0\junit-jupiter-5.9.0.jar;C:\Users\MegaTecnologia\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.0\junit-jupiter-api-5.9.0.jar;C:\Users\MegaTecnologia\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\MegaTecnologia\.m2\repository\org\junit\platform\junit-platform-commons\1.9.0\junit-platform-commons-1.9.0.jar;C:\Users\MegaTecnologia\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\MegaTecnologia\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.9.0\junit-jupiter-params-5.9.0.jar;C:\Users\MegaTecnologia\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.0\junit-jupiter-engine-5.9.0.jar;C:\Users\MegaTecnologia\.m2\repository\org\junit\platform\junit-platform-engine\1.9.0\junit-platform-engine-1.9.0.jar;"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
     <property name="java.vendor.url" value="https://java.oracle.com/"/>
     <property name="user.timezone" value="America/Buenos_Aires"/>
-    <property name="os.name" value="Windows 10"/>
+    <property name="os.name" value="Windows 11"/>
     <property name="java.vm.specification.version" value="21"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="AR"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\Alan\AppData\Local\Temp\surefire12083598839702815859\surefirebooter-20241102213536724_3.jar C:\Users\Alan\AppData\Local\Temp\surefire12083598839702815859 2024-11-02T21-35-36_555-jvmRun1 surefire-20241102213536724_1tmp surefire_0-20241102213536724_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\MegaTecnologia\AppData\Local\Temp\surefire7752303375853548307\surefirebooter-20241110185701633_3.jar C:\Users\MegaTecnologia\AppData\Local\Temp\surefire7752303375853548307 2024-11-10T18-57-01_506-jvmRun1 surefire-20241110185701633_1tmp surefire_0-20241110185701633_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="D:\Proyectos\Proyectos Java\compilador\target\test-classes;D:\Proyectos\Proyectos Java\compilador\target\classes;C:\Users\Alan\.m2\repository\org\junit\jupiter\junit-jupiter\5.9.0\junit-jupiter-5.9.0.jar;C:\Users\Alan\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.0\junit-jupiter-api-5.9.0.jar;C:\Users\Alan\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Alan\.m2\repository\org\junit\platform\junit-platform-commons\1.9.0\junit-platform-commons-1.9.0.jar;C:\Users\Alan\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Alan\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.9.0\junit-jupiter-params-5.9.0.jar;C:\Users\Alan\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.0\junit-jupiter-engine-5.9.0.jar;C:\Users\Alan\.m2\repository\org\junit\platform\junit-platform-engine\1.9.0\junit-platform-engine-1.9.0.jar;"/>
+    <property name="surefire.test.class.path" value="D:\Proyectos\Proyectos java\compilador\target\test-classes;D:\Proyectos\Proyectos java\compilador\target\classes;C:\Users\MegaTecnologia\.m2\repository\org\junit\jupiter\junit-jupiter\5.9.0\junit-jupiter-5.9.0.jar;C:\Users\MegaTecnologia\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.0\junit-jupiter-api-5.9.0.jar;C:\Users\MegaTecnologia\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\MegaTecnologia\.m2\repository\org\junit\platform\junit-platform-commons\1.9.0\junit-platform-commons-1.9.0.jar;C:\Users\MegaTecnologia\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\MegaTecnologia\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.9.0\junit-jupiter-params-5.9.0.jar;C:\Users\MegaTecnologia\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.0\junit-jupiter-engine-5.9.0.jar;C:\Users\MegaTecnologia\.m2\repository\org\junit\platform\junit-platform-engine\1.9.0\junit-platform-engine-1.9.0.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
-    <property name="user.home" value="C:\Users\Alan"/>
+    <property name="user.home" value="C:\Users\MegaTecnologia"/>
     <property name="user.language" value="es"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="java.version.date" value="2024-01-16"/>
     <property name="java.home" value="C:\Program Files\Java\jdk-21"/>
     <property name="file.separator" value="\"/>
-    <property name="basedir" value="D:\Proyectos\Proyectos Java\compilador"/>
+    <property name="basedir" value="D:\Proyectos\Proyectos java\compilador"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Alan\AppData\Local\Temp\surefire12083598839702815859\surefirebooter-20241102213536724_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\MegaTecnologia\AppData\Local\Temp\surefire7752303375853548307\surefirebooter-20241110185701633_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.2+13-LTS-58"/>
-    <property name="user.name" value="Alan"/>
+    <property name="user.name" value="Alan (Escritorio)"/>
     <property name="stdout.encoding" value="Cp1252"/>
     <property name="path.separator" value=";"/>
     <property name="os.version" value="10.0"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
-    <property name="localRepository" value="C:\Users\Alan\.m2\repository"/>
+    <property name="localRepository" value="C:\Users\MegaTecnologia\.m2\repository"/>
     <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
-    <property name="java.io.tmpdir" value="C:\Users\Alan\AppData\Local\Temp\"/>
+    <property name="java.io.tmpdir" value="C:\Users\MEGATE~1\AppData\Local\Temp\"/>
     <property name="java.version" value="21.0.2"/>
-    <property name="user.dir" value="D:\Proyectos\Proyectos Java\compilador"/>
+    <property name="user.dir" value="D:\Proyectos\Proyectos java\compilador"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="native.encoding" value="Cp1252"/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk-21\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Users\Alan\.cabal\bin;C:\Users\Alan\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Alan\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files\Microsoft MPI\Bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Microsoft SQL Server\160\Tools\Binn;C:\Program Files\Microsoft SQL Server\160\Tools\Binn;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn;C:\Program Files\Microsoft SQL Server\160\DTS\Binn;C:\Program Files (x86)\Microsoft SQL Server\160\DTS\Binn;C:\Program Files\Azure Data Studio\bin;C:\Program Files\nodejs;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\CMake\bin;C:\workspace\apache-maven-3.9.9\bin;C:\Users\Alan\AppData\Local\Programs\Python\Python312\Scripts;C:\Users\Alan\AppData\Local\Programs\Python\Python312;C:\Users\Alan\scoop\shims;C:\Users\Alan\AppData\Local\Microsoft\WindowsApps;C:\Users\Alan\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Azure Data Studio\bin;C:\Users\Alan\AppData\Local\Microsoft\WinGet\Links;C:\ghcup\bin;C:\Users\Alan\AppData\Roaming\npm;D:\Programas\PyCharm 2024.2.3\bin;C:\Users\Alan\AppData\Local\Programs\Python\Python312;C:\Users\Alan\AppData\Local\Programs\Python\Python312\Scripts;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl;."/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-21\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\MegaTecnologia\AppData\Local\fnm_multishells\15576_1731275760616;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files\Microsoft\jdk-11.0.16.101-hotspot\bin;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\Program Files (x86)\Microsoft SQL Server\160\Tools\Binn\;C:\Program Files\Microsoft SQL Server\160\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\dotnet\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\Rakudo\bin;C:\Program Files\Rakudo\share\perl6\site\bin;D:\Programas\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\nodejs\;C:\Program Files\PowerShell\7\;C:\Program Files\CMake\bin;C:\workspace\apache-maven-3.9.9\bin;C:\Users\MegaTecnologia\AppData\Local\Programs\Python\Python313\Scripts\;C:\Users\MegaTecnologia\AppData\Local\Programs\Python\Python313\;C:\Users\MegaTecnologia\scoop\shims;C:\Users\MegaTecnologia\AppData\Local\activestate\cache\bin;C:\Users\MegaTecnologia\AppData\Local\ActiveState\StateTool\release\bin;C:\Users\MegaTecnologia\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\MegaTecnologia\AppData\Local\Programs\Python\Python310\;C:\Users\MegaTecnologia\AppData\Local\Microsoft\WindowsApps;D:\Programas\Vs Code\Microsoft VS Code\bin;C:\Users\MegaTecnologia\AppData\Roaming\Composer\vendor\bin;C:\Program Files\Azure Data Studio\bin;C:\Users\MegaTecnologia\.dotnet\tools;D:\Programas\IntelliJ IDEA 2023.3.6\bin;C:\Users\MegaTecnologia\AppData\Local\Microsoft\WinGet\Links;C:\Users\MegaTecnologia\AppData\Local\Microsoft\WinGet\Packages\Schniz.fnm_Microsoft.Winget.Source_8wekyb3d8bbwe;C:\Program Files\LibreOffice\program;C:\Program Files\JetBrains\PyCharm 2024.2.4\bin;;C:\Users\MegaTecnologia\AppData\Roaming\npm;."/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
     <property name="stderr.encoding" value="Cp1252"/>
     <property name="java.vendor" value="Oracle Corporation"/>
@@ -58,46 +58,46 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testInvalidParenthesesInIfStatement" classname="test.java.CompilerTest" time="0.04">
+  <testcase name="testInvalidParenthesesInIfStatement" classname="test.java.CompilerTest" time="0.025">
     <system-out><![CDATA[Reconociendo una declaración 'if' en el token if
 ]]></system-out>
   </testcase>
-  <testcase name="testInvalidBreakStatementOutsideLoop" classname="test.java.CompilerTest" time="0.0"/>
-  <testcase name="testInvalidVariableDeclarationWithInvalidIdentifier" classname="test.java.CompilerTest" time="0.0">
+  <testcase name="testInvalidBreakStatementOutsideLoop" classname="test.java.CompilerTest" time="0.002"/>
+  <testcase name="testInvalidVariableDeclarationWithInvalidIdentifier" classname="test.java.CompilerTest" time="0.003">
     <system-out><![CDATA[Reconociendo una declaración de variable con tipo long
 ]]></system-out>
   </testcase>
-  <testcase name="testValidIOStatement" classname="test.java.CompilerTest" time="0.019">
+  <testcase name="testValidIOStatement" classname="test.java.CompilerTest" time="0.004">
     <system-out><![CDATA[Reconociendo una instrucción de E/S: write
 Operación de E/S con: _var
 ]]></system-out>
   </testcase>
-  <testcase name="testParseValidIfStatement" classname="test.java.CompilerTest" time="0.005">
+  <testcase name="testParseValidIfStatement" classname="test.java.CompilerTest" time="0.003">
     <system-out><![CDATA[Reconociendo una declaración 'if' en el token if
 Bloque 'if' reconocido.
 Reconociendo una instrucción de E/S: write
 Operación de E/S con: _var
 ]]></system-out>
   </testcase>
-  <testcase name="testInvalidWhileMissingParenthesis" classname="test.java.CompilerTest" time="0.006"/>
-  <testcase name="testInvalidIOStatementWithoutArguments" classname="test.java.CompilerTest" time="0.003">
+  <testcase name="testInvalidWhileMissingParenthesis" classname="test.java.CompilerTest" time="0.002"/>
+  <testcase name="testInvalidIOStatementWithoutArguments" classname="test.java.CompilerTest" time="0.002">
     <system-out><![CDATA[Reconociendo una instrucción de E/S: write
 ]]></system-out>
   </testcase>
-  <testcase name="testInvalidIOStatement" classname="test.java.CompilerTest" time="0.0">
+  <testcase name="testInvalidIOStatement" classname="test.java.CompilerTest" time="0.002">
     <system-out><![CDATA[Reconociendo una instrucción de E/S: write
 ]]></system-out>
   </testcase>
-  <testcase name="testInvalidVariableDeclaration" classname="test.java.CompilerTest" time="0.007">
+  <testcase name="testInvalidVariableDeclaration" classname="test.java.CompilerTest" time="0.003">
     <system-out><![CDATA[Reconociendo una declaración de variable con tipo long
 ]]></system-out>
   </testcase>
   <testcase name="testInvalidAssignmentWithoutEqualSign" classname="test.java.CompilerTest" time="0.002"/>
-  <testcase name="testInvalidWhileMissingBrace" classname="test.java.CompilerTest" time="0.005"/>
+  <testcase name="testInvalidWhileMissingBrace" classname="test.java.CompilerTest" time="0.003"/>
   <testcase name="testMissingThenInIfStatement" classname="test.java.CompilerTest" time="0.002">
     <system-out><![CDATA[Reconociendo una declaración 'if' en el token if
 ]]></system-out>
   </testcase>
-  <testcase name="testTokenizeValidInput" classname="test.java.CompilerTest" time="0.001"/>
-  <testcase name="testInvalidBreakOutsideLoop" classname="test.java.CompilerTest" time="0.008"/>
+  <testcase name="testTokenizeValidInput" classname="test.java.CompilerTest" time="0.002"/>
+  <testcase name="testInvalidBreakOutsideLoop" classname="test.java.CompilerTest" time="0.001"/>
 </testsuite>

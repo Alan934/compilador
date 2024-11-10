@@ -112,6 +112,28 @@ class CompilerTest {
         assertEquals("Error: Se esperaba '{' después de la condición.", thrown.getMessage());
     }
 
+//    @Test
+//    void testParseWhileStatement() {
+//        String code = "while (_var < 10 { _var = _var + 1; }"; // Error: Falta el paréntesis de cierre
+//        lexer.tokenize(code);
+//        List<Token> tokens = lexer.getTokens();
+//
+//        RuntimeException thrown = assertThrows(RuntimeException.class, () -> parser.parse(tokens),
+//                "Se esperaba una excepción debido a la falta del paréntesis de cierre en while");
+//        assertEquals("Error: Se esperaba ')' para cerrar la condición de 'while'.", thrown.getMessage());
+//    }
+
+//    @Test
+//    void testInvalidOperatorUsage() {
+//        String code = "long _var = 10 +;"; // Error: Operador inesperado al final de la expresión
+//        lexer.tokenize(code);
+//        List<Token> tokens = lexer.getTokens();
+//
+//        Exception thrown = assertThrows(Exception.class, () -> parser.parse(tokens),
+//                "Se esperaba una excepción para operador mal usado");
+//        assertEquals("Error: Operador inesperado al final de la expresión", thrown.getMessage());
+//    }
+
     // @Test
     // void testParseWhileStatement() {
     //     String code = "while (_var < 10) { _var = _var + 1; }";

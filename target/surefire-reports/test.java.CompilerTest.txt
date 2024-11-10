@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: test.java.CompilerTest
 -------------------------------------------------------------------------------
-Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.141 s -- in test.java.CompilerTest
+Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.080 s -- in test.java.CompilerTest
