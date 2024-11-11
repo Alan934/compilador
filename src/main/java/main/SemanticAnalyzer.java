@@ -28,15 +28,19 @@ public class SemanticAnalyzer {
     }
 
     private int analyzeVariableDeclaration(List<Token> tokens, int index) {
+        Token typeToken = tokens.get(index);
         Token identifierToken = tokens.get(index + 1);
         String variable = identifierToken.getValue();
 
         if (symbolTable.containsKey(variable)) {
             reportSemanticError("Variable ya declarada", identifierToken);
+        } else {
+            // Imprimir la declaración de la variable
+            System.out.println("Declarando variable: " + variable + " de tipo: " + typeToken.getValue());
         }
 
-        symbolTable.put(variable, tokens.get(index).getValue());
-        return index + 3;
+        symbolTable.put(variable, typeToken.getValue());
+        return index + 3; // Saltar el tipo, identificador y el token `;` o `=`
     }
 
     private int analyzeVariableUsage(List<Token> tokens, int index) {
@@ -45,6 +49,9 @@ public class SemanticAnalyzer {
 
         if (!symbolTable.containsKey(variable)) {
             reportSemanticError("Variable no declarada", identifierToken);
+        } else {
+            // Imprimir el uso de la variable
+            System.out.println("Usando variable: " + variable);
         }
 
         return index + 1;

@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class Lexer {
     private List<Token> tokens = new ArrayList<>();
-    private int currentLine = 1; // Línea actual
+    private int currentLine = 1;
 
     // Patrones regex para los diferentes tipos de tokens
     private static final String COMMENT_MULTI = "/\\*[^*]*\\*+(?:[^/*][^*]*\\*+)*/";

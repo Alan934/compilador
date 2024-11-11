@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         // Ejemplo de código de entrada para el compilador
         String inputCode = "/* Ejemplo de múltiples consignas */\n" +
-                "long _var = 10; // Inicialización de _var1\n" +
+                "long _var = 10.66; // Inicialización de _var1\n" +
                 "double _var2 = 20.5; // Inicialización de _var2\n" +
                 "// Control de flujo\n" +
                 "if (_var >= 10) { write(_var); }\n" +

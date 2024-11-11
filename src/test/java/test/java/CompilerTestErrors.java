@@ -30,6 +30,7 @@ public class CompilerTestErrors {
 
     @Test
     void testInvalidBreakOutsideLoop() {
+        // Verifica que 'break' fuera de un bucle genere un error sintáctico en la línea 1.
         String code = "break;";
         lexer.tokenize(code);
         List<Token> tokens = lexer.getTokens();
@@ -40,6 +41,7 @@ public class CompilerTestErrors {
 
     @Test
     void testSemanticErrorDetection() {
+        // Comprueba que el uso de una variable no declarada ('_z') genere un error semántico en la línea 2.
         String inputCode = """
             long _x = 10;
             _z = 30; // Error semántico: variable no declarada
@@ -55,6 +57,7 @@ public class CompilerTestErrors {
 
     @Test
     void testInvalidVariableDeclaration() {
+        // Verifica que declarar una variable con un identificador inválido ('123abc') genere un error en la línea 1.
         String code = "long 123abc = 10;";
         lexer.tokenize(code);
         List<Token> tokens = lexer.getTokens();
@@ -65,6 +68,7 @@ public class CompilerTestErrors {
 
     @Test
     void testInvalidIOStatement() {
+        // Comprueba que usar 'write' sin argumentos genere un error en la línea 1.
         String code = "write();";
         lexer.tokenize(code);
         List<Token> tokens = lexer.getTokens();
@@ -75,6 +79,7 @@ public class CompilerTestErrors {
 
     @Test
     void testMissingThenInIfStatement() {
+        // Verifica que falte la llave de apertura '{' después de 'if', generando un error en la línea 1.
         String code = "if (_var >= 10) write(_var);";
         lexer.tokenize(code);
         List<Token> tokens = lexer.getTokens();
@@ -85,6 +90,7 @@ public class CompilerTestErrors {
 
     @Test
     void testInvalidAssignmentWithoutEqualSign() {
+        // Comprueba que al faltar el operador '=' en una asignación se genere un error en la línea 1.
         String code = "_var 20;";
         lexer.tokenize(code);
         List<Token> tokens = lexer.getTokens();
@@ -95,6 +101,7 @@ public class CompilerTestErrors {
 
     @Test
     void testInvalidAssignmentWithIncorrectOperator() {
+        // Verifica que un operador incorrecto en una asignación ('+ 20') genere un error en la línea 1.
         String code = "_var = + 20;";
         lexer.tokenize(code);
         List<Token> tokens = lexer.getTokens();
@@ -105,6 +112,7 @@ public class CompilerTestErrors {
 
     @Test
     void testInvalidWhileMissingBrace() {
+        // Comprueba que falte la llave de apertura '{' en un bucle 'while', generando un error en la línea 1.
         String code = "while (_var < 10) _var = _var + 1;";
         lexer.tokenize(code);
         List<Token> tokens = lexer.getTokens();
@@ -115,6 +123,7 @@ public class CompilerTestErrors {
 
     @Test
     void testInvalidWhileMissingParenthesis() {
+        // Verifica que falte el paréntesis de apertura '(' en un 'while', generando un error en la línea 1.
         String code = "while _var < 10) { _var = _var + 1; }";
         lexer.tokenize(code);
         List<Token> tokens = lexer.getTokens();
@@ -125,6 +134,7 @@ public class CompilerTestErrors {
 
     @Test
     void testInvalidOperatorUsage() {
+        // Comprueba que un operador inesperado al final de una asignación ('10 +;') genere un error en la línea 1.
         String code = "long _var = 10 +;";
         lexer.tokenize(code);
         List<Token> tokens = lexer.getTokens();
@@ -135,6 +145,7 @@ public class CompilerTestErrors {
 
     @Test
     void testInvalidParenthesesInIfStatement() {
+        // Verifica que falte el paréntesis de apertura '(' en una declaración 'if', generando un error en la línea 1.
         String code = "if _var >= 10) { write(_var); }";
         lexer.tokenize(code);
         List<Token> tokens = lexer.getTokens();
@@ -145,6 +156,7 @@ public class CompilerTestErrors {
 
     @Test
     void testInvalidIOStatementWithoutArguments() {
+        // Verifica que usar 'write' sin argumentos genere un error en la línea 1.
         String code = "write();";
         lexer.tokenize(code);
         List<Token> tokens = lexer.getTokens();
@@ -155,6 +167,7 @@ public class CompilerTestErrors {
 
     @Test
     void testInvalidBreakStatementOutsideLoop() {
+        // Verifica que 'break' fuera de un bucle genere un error sintáctico en la línea 1.
         String code = "break;";
         lexer.tokenize(code);
         List<Token> tokens = lexer.getTokens();
@@ -165,6 +178,7 @@ public class CompilerTestErrors {
 
     @Test
     void testInvalidVariableDeclarationWithInvalidIdentifier() {
+        // Verifica que declarar una variable con un identificador inválido ('123abc') genere un error en la línea 1.
         String code = "long 123abc = 10;";
         lexer.tokenize(code);
         List<Token> tokens = lexer.getTokens();
@@ -175,6 +189,7 @@ public class CompilerTestErrors {
 
     @Test
     void testSyntaxErrorDetection() {
+        // Comprueba que un error sintáctico dentro de 'if' (falta un paréntesis) genere un error en la línea 2.
         String inputCode = """
                 long _x = 10;
                 if (_x >= 10) write(_x; // Error sintáctico aquí
