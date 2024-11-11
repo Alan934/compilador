@@ -28,16 +28,14 @@ public class SemanticAnalyzer {
     }
 
     private int analyzeVariableDeclaration(List<Token> tokens, int index) {
-        Token typeToken = tokens.get(index);
-        String type = typeToken.getValue();
         Token identifierToken = tokens.get(index + 1);
         String variable = identifierToken.getValue();
 
         if (symbolTable.containsKey(variable)) {
-            throw new RuntimeException("Error semántico: Variable '" + variable + "' ya declarada en la línea " + identifierToken.getLine());
+            reportSemanticError("Variable ya declarada", identifierToken);
         }
 
-        symbolTable.put(variable, type);
+        symbolTable.put(variable, tokens.get(index).getValue());
         return index + 3;
     }
 
@@ -46,10 +44,14 @@ public class SemanticAnalyzer {
         String variable = identifierToken.getValue();
 
         if (!symbolTable.containsKey(variable)) {
-            throw new RuntimeException("Error semántico: Variable '" + variable + "' no declarada en la línea " + identifierToken.getLine());
+            reportSemanticError("Variable no declarada", identifierToken);
         }
 
         return index + 1;
+    }
+
+    private void reportSemanticError(String message, Token token) {
+        throw new RuntimeException("Error semántico en línea " + token.getLine() + ": " + message + " - Variable: '" + token.getValue() + "'");
     }
 
     public Map<String, String> getSymbolTable() {

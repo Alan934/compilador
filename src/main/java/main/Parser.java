@@ -43,6 +43,10 @@ public class Parser {
     private int parseIfStatement(List<Token> tokens, int index) {
         System.out.println("Reconociendo una declaración 'if' en el token " + tokens.get(index).getValue());
 
+        if (tokens.size() <= index + 1 || !tokens.get(index + 1).getValue().equals("(")) {
+            reportSyntaxError("Se esperaba '(' después de 'if'", tokens.get(index + 1));
+        }
+
         if (tokens.size() > index + 1 && tokens.get(index + 1).getType() == TokenType.PARENTHESIS &&
                 tokens.get(index + 1).getValue().equals("(")) {
             int closingParenIndex = index + 1;
@@ -97,9 +101,8 @@ public class Parser {
     }
 
     private int parseWhileStatement(List<Token> tokens, int index) {
-        inLoopContext = true; // Entramos en un contexto de bucle
+        inLoopContext = true;
 
-        // Verifica la apertura del paréntesis
         if (tokens.size() <= index + 1 || !tokens.get(index + 1).getValue().equals("(")) {
             throw new RuntimeException("Error: Se esperaba '(' después de 'while'.");
         }
@@ -114,7 +117,6 @@ public class Parser {
             throw new RuntimeException("Error: Se esperaba ')' para cerrar la condición de 'while'.");
         }
 
-        // Verifica la apertura de la llave del bloque de código
         if (closingParenIndex + 1 >= tokens.size() ||
                 !tokens.get(closingParenIndex + 1).getValue().equals("{")) {
             throw new RuntimeException("Error: Se esperaba '{' después de la condición de 'while'.");
@@ -148,7 +150,6 @@ public class Parser {
             throw new RuntimeException("Error: Variable '" + identifier + "' no declarada.");
         }
 
-        // Verificar el operador de asignación
         if (!tokens.get(index + 1).getValue().equals("=")) {
             throw new RuntimeException("Error: Se esperaba '=' para la asignación.");
         }
@@ -170,7 +171,6 @@ public class Parser {
         String type = tokens.get(index).getValue();
         String identifier = tokens.get(index + 1).getValue();
 
-        // Verificar que el identificador comience con "_"
         if (!identifier.matches("^_[a-zA-Z][a-zA-Z0-9]*$")) {
             throw new RuntimeException("Error: Identificador inválido, debe comenzar con '_' seguido de letras o dígitos.");
         }
@@ -192,6 +192,10 @@ public class Parser {
         } else {
             return index + 2;
         }
+    }
+
+    private void reportSyntaxError(String message, Token token) {
+        throw new RuntimeException("Error sintáctico en línea " + token.getLine() + ": " + message + " - Token: '" + token.getValue() + "'");
     }
 
     private int parseBreakStatement(List<Token> tokens, int index) {

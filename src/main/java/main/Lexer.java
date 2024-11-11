@@ -55,7 +55,14 @@ public class Lexer {
         if (token.matches(PARENTHESIS)) return TokenType.PARENTHESIS;
         if (token.matches(BRACES)) return TokenType.BRACE;
         if (token.matches(SEMICOLON)) return TokenType.SEMICOLON;
+
+        // Si el token no coincide con ningún tipo válido, es un error léxico
+        reportError(token, currentLine);
         return TokenType.UNKNOWN;
+    }
+
+    private void reportError(String token, int lineNumber) {
+        throw new RuntimeException("Error léxico en línea " + lineNumber + ": Token inesperado '" + token + "'");
     }
 
     public List<Token> getTokens() {

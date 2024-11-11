@@ -3,7 +3,7 @@ package main;
 public class Token {
     private TokenType type;
     private String value;
-    private int line; // Línea donde se encontró el token
+    private int line;
 
     public Token(TokenType type, String value, int line) {
         this.type = type;
@@ -25,6 +25,6 @@ public class Token {
 
     @Override
     public String toString() {
-        return "Token{" + "type=" + type + ", value='" + value + '\'' + ", line=" + line + '}';
+        return "Token{" + "type=" + type + ", value='" + value + '\'' + ", linea=" + line + '}';
     }
 }
