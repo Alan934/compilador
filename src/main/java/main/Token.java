@@ -1,12 +1,14 @@
 package main;
 
-public class Token { //Analesis Lexico
+public class Token {
     private TokenType type;
     private String value;
+    private int line; // Línea donde se encontró el token
 
-    public Token(TokenType type, String value) {
+    public Token(TokenType type, String value, int line) {
         this.type = type;
         this.value = value;
+        this.line = line;
     }
 
     public TokenType getType() {
@@ -17,9 +19,12 @@ public class Token { //Analesis Lexico
         return value;
     }
 
+    public int getLine() {
+        return line;
+    }
+
     @Override
     public String toString() {
-        return "main.java.Token{" + "type=" + type + ", value='" + value + '\'' + '}';
+        return "Token{" + "type=" + type + ", value='" + value + '\'' + ", line=" + line + '}';
     }
 }
-

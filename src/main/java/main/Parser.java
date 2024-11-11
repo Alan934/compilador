@@ -5,39 +5,37 @@ import java.util.List;
 import java.util.Map;
 
 public class Parser {
-    private boolean inLoopContext = false; // Para controlar el contexto de bucle
-    private Map<String, String> symbolTable = new HashMap<>(); // Tabla de símbolos para el análisis semántico
+    private boolean inLoopContext = false;
+    private Map<String, String> symbolTable = new HashMap<>();
 
-    public void parse(List<Token> tokens) { // Análisis sintáctico
+    public void parse(List<Token> tokens) {
         int index = 0;
         while (index < tokens.size()) {
             Token token = tokens.get(index);
 
-            if (token.getType() == TokenType.KEYWORD) {
-                // Verificar si el token es un tipo de dato
-                if (token.getValue().equals("long") || token.getValue().equals("double")) {
-                    System.out.println("Reconociendo declaración de variable con tipo " + token.getValue());
-                    index = parseVariableDeclaration(tokens, index);
-                } else if (token.getValue().equals("if")) {
-                    System.out.println("Reconociendo declaración 'if'");
-                    index = parseIfStatement(tokens, index);
-                } else if (token.getValue().equals("while")) {
-                    System.out.println("Reconociendo declaración 'while'");
-                    index = parseWhileStatement(tokens, index);
-                } else if (token.getValue().equals("break")) {
-                    System.out.println("Reconociendo declaración 'break'");
-                    index = parseBreakStatement(tokens, index);
-                } else if (token.getValue().equals("write") || token.getValue().equals("read")) {
-                    System.out.println("Reconociendo instrucción de E/S: " + token.getValue());
-                    index = parseIOStatement(tokens, index);
+            try {
+                if (token.getType() == TokenType.KEYWORD) {
+                    if (token.getValue().equals("long") || token.getValue().equals("double")) {
+                        index = parseVariableDeclaration(tokens, index);
+                    } else if (token.getValue().equals("if")) {
+                        index = parseIfStatement(tokens, index);
+                    } else if (token.getValue().equals("while")) {
+                        index = parseWhileStatement(tokens, index);
+                    } else if (token.getValue().equals("break")) {
+                        index = parseBreakStatement(tokens, index);
+                    } else if (token.getValue().equals("write") || token.getValue().equals("read")) {
+                        index = parseIOStatement(tokens, index);
+                    } else {
+                        throw new RuntimeException("Error sintáctico: Palabra clave inesperada '" + token.getValue() + "' en la línea " + token.getLine());
+                    }
+                } else if (token.getType() == TokenType.IDENTIFIER) {
+                    index = parseAssignment(tokens, index);
                 } else {
-                    System.out.println("Error: Palabra clave inesperada " + token.getValue());
+                    index++;
                 }
-            } else if (token.getType() == TokenType.IDENTIFIER) {
-                System.out.println("Reconociendo asignación para " + token.getValue());
-                index = parseAssignment(tokens, index);
-            } else {
-                index++;
+            } catch (RuntimeException e) {
+                System.err.println("Error en línea " + token.getLine() + ": " + e.getMessage());
+                return;
             }
         }
     }
@@ -139,7 +137,6 @@ public class Parser {
             throw new RuntimeException("Error: Se esperaba '}' para cerrar el bloque de 'while'.");
         }
 
-        // Salimos del contexto de bucle después del bloque `while`
         inLoopContext = false;
         return afterWhileBlockIndex + 1;
     }
@@ -147,7 +144,6 @@ public class Parser {
     private int parseAssignment(List<Token> tokens, int index) {
         String identifier = tokens.get(index).getValue();
 
-        // Validar que el identificador esté definido previamente
         if (!symbolTable.containsKey(identifier)) {
             throw new RuntimeException("Error: Variable '" + identifier + "' no declarada.");
         }
@@ -158,7 +154,6 @@ public class Parser {
         }
 
         // Validar que la asignación contenga una expresión aritmética válida
-        // Este ejemplo solo cubre casos básicos, para casos más complejos, implementa un análisis de expresiones completo.
         int assignmentStartIndex = index + 2;
         while (assignmentStartIndex < tokens.size() &&
                 (tokens.get(assignmentStartIndex).getType() == TokenType.NUMBER ||
@@ -167,7 +162,7 @@ public class Parser {
             assignmentStartIndex++;
         }
 
-        return assignmentStartIndex; // Avanza al siguiente token después de la asignación
+        return assignmentStartIndex;
     }
 
 
@@ -183,7 +178,6 @@ public class Parser {
         // Agregar a la tabla de símbolos
         symbolTable.put(identifier, type);
 
-        // Manejar la asignación opcional
         if (tokens.get(index + 2).getValue().equals("=")) {
             Token valueToken = tokens.get(index + 3);
 
@@ -194,9 +188,9 @@ public class Parser {
                 throw new RuntimeException("Error: Se esperaba un número para la variable 'double'.");
             }
 
-            return index + 4; // Avanzar después de la asignación
+            return index + 4;
         } else {
-            return index + 2; // Solo declaración
+            return index + 2;
         }
     }
 

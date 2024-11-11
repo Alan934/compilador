@@ -112,66 +112,6 @@ class CompilerTest {
         assertEquals("Error: Se esperaba '{' después de la condición.", thrown.getMessage());
     }
 
-//    @Test
-//    void testParseWhileStatement() {
-//        String code = "while (_var < 10 { _var = _var + 1; }"; // Error: Falta el paréntesis de cierre
-//        lexer.tokenize(code);
-//        List<Token> tokens = lexer.getTokens();
-//
-//        RuntimeException thrown = assertThrows(RuntimeException.class, () -> parser.parse(tokens),
-//                "Se esperaba una excepción debido a la falta del paréntesis de cierre en while");
-//        assertEquals("Error: Se esperaba ')' para cerrar la condición de 'while'.", thrown.getMessage());
-//    }
-
-//    @Test
-//    void testInvalidOperatorUsage() {
-//        String code = "long _var = 10 +;"; // Error: Operador inesperado al final de la expresión
-//        lexer.tokenize(code);
-//        List<Token> tokens = lexer.getTokens();
-//
-//        Exception thrown = assertThrows(Exception.class, () -> parser.parse(tokens),
-//                "Se esperaba una excepción para operador mal usado");
-//        assertEquals("Error: Operador inesperado al final de la expresión", thrown.getMessage());
-//    }
-
-    // @Test
-    // void testParseWhileStatement() {
-    //     String code = "while (_var < 10) { _var = _var + 1; }";
-    //     lexer.tokenize(code);
-    //     List<Token> tokens = lexer.getTokens();
-
-    //     assertDoesNotThrow(() -> parser.parse(tokens), "El bloque while debería ser válido y no lanzar excepción");
-    // }
-
-    // @Test
-    // void testInvalidOperatorUsage() {
-    //     String code = "long _var = 10 +;";
-    //     lexer.tokenize(code);
-    //     List<Token> tokens = lexer.getTokens();
-
-    //     RuntimeException thrown = assertThrows(RuntimeException.class, () -> parser.parse(tokens),
-    //             "Se esperaba una excepción para operador mal usado");
-    //     assertEquals("Error: Operador inesperado al final de la expresión", thrown.getMessage());
-    // }
-
-    // @Test
-    // void testParseAssignment() {
-    //     String code = "_var = 20;";
-    //     lexer.tokenize(code);
-    //     List<Token> tokens = lexer.getTokens();
-
-    //     assertDoesNotThrow(() -> parser.parse(tokens), "La asignación debería ser válida y no lanzar excepción");
-    // }
-
-    // @Test
-    // void testParseAssignment() {
-    //     String code = "_var = 20;";
-    //     lexer.tokenize(code);
-    //     List<Token> tokens = lexer.getTokens();
-
-    //     assertDoesNotThrow(() -> parser.parse(tokens), "La asignación debería ser válida y no lanzar excepción");
-    // }
-
     @Test
     void testInvalidAssignmentWithoutEqualSign() {
         String code = "_var 20;";
@@ -183,35 +123,25 @@ class CompilerTest {
         assertEquals("Error: Se esperaba un '=' para la asignación.", thrown.getMessage());
     }
 
-    // @Test
-    // void testInvalidAssignmentWithIncorrectOperator() {
-    //     String code = "_var = + 20;";
-    //     lexer.tokenize(code);
-    //     List<Token> tokens = lexer.getTokens();
+     @Test
+     void testInvalidAssignmentWithIncorrectOperator() {
+         String code = "_var = + 20;";
+         lexer.tokenize(code);
+         List<Token> tokens = lexer.getTokens();
 
-    //     RuntimeException thrown = assertThrows(RuntimeException.class, () -> parser.parse(tokens),
-    //             "Se esperaba una excepción por operador inesperado en la asignación");
-    //     assertEquals("Error: Operador inesperado en la asignación.", thrown.getMessage());
-    // }
+         RuntimeException thrown = assertThrows(RuntimeException.class, () -> parser.parse(tokens),
+                 "Se esperaba una excepción por operador inesperado en la asignación");
+         assertEquals("Error: Operador inesperado en la asignación.", thrown.getMessage());
+     }
 
-    // @Test
-    // void testInvalidParenthesesInIfStatement() {
-    //     String code = "if _var >= 10) { write(_var); }";
-    //     lexer.tokenize(code);
-    //     List<Token> tokens = lexer.getTokens();
+     @Test
+     void testParseValidWhileStatement() {
+         String code = "while (_var < 10) { _var = _var + 1; }";
+         lexer.tokenize(code);
+         List<Token> tokens = lexer.getTokens();
 
-    //     RuntimeException thrown = assertThrows(RuntimeException.class, () -> parser.parse(tokens),
-    //             "Se esperaba una excepción por paréntesis faltante en la declaración if");
-    //     assertEquals("Error: Se esperaba '(' después de 'if'.", thrown.getMessage());
-    // }
-//     @Test
-// void testParseValidWhileStatement() {
-//     String code = "while (_var < 10) { _var = _var + 1; }";
-//     lexer.tokenize(code);
-//     List<Token> tokens = lexer.getTokens();
-
-//     assertDoesNotThrow(() -> parser.parse(tokens), "El bloque while debería ser válido y no lanzar excepción");
-// }
+         assertDoesNotThrow(() -> parser.parse(tokens), "El bloque while debería ser válido y no lanzar excepción");
+     }
 
     @Test
     void testInvalidWhileMissingBrace() {
@@ -235,16 +165,17 @@ class CompilerTest {
         assertEquals("Error: Se esperaba '(' después de 'while'.", thrown.getMessage());
     }
 
-    // @Test
-    // void testInvalidOperatorUsage() {
-    //     String code = "long _var = 10 +;";
-    //     lexer.tokenize(code);
-    //     List<Token> tokens = lexer.getTokens();
+     @Test
+     void testInvalidOperatorUsage() {
+         String code = "long _var = 10 +;";
+         lexer.tokenize(code);
+         List<Token> tokens = lexer.getTokens();
 
-    //     RuntimeException thrown = assertThrows(RuntimeException.class, () -> parser.parse(tokens),
-    //             "Se esperaba una excepción para uso incorrecto de operador");
-    //     assertEquals("Error: Operador inesperado en la asignación.", thrown.getMessage());
-    // }
+         RuntimeException thrown = assertThrows(RuntimeException.class, () -> parser.parse(tokens),
+                 "Se esperaba una excepción para uso incorrecto de operador");
+         assertEquals("Error: Operador inesperado en la asignación.", thrown.getMessage());
+     }
+
     @Test
     void testInvalidParenthesesInIfStatement() {
         String code = "if _var >= 10) { write(_var); }";

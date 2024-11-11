@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 
 public class Lexer {
     private List<Token> tokens = new ArrayList<>();
+    private int currentLine = 1; // Línea actual
 
     // Patrones regex para los diferentes tipos de tokens
     private static final String COMMENT_MULTI = "/\\*[^*]*\\*+(?:[^/*][^*]*\\*+)*/";
@@ -24,37 +25,40 @@ public class Lexer {
             COMMENT_MULTI + "|" + COMMENT_SINGLE + "|" + KEYWORDS + "|" + IDENTIFIERS + "|" + OPERATORS + "|" +
                     NUMBERS + "|" + PARENTHESIS + "|" + BRACES + "|" + SEMICOLON);
 
-    // Tokenizar la entrada
     public void tokenize(String input) {
-        Matcher matcher = TOKEN_PATTERNS.matcher(input);
+        // Separar el input en líneas
+        String[] lines = input.split("\n");
 
-        while (matcher.find()) {
-            if (matcher.group().matches(COMMENT_MULTI)) {
-                tokens.add(new Token(TokenType.COMMENT_MULTI, matcher.group()));
-            } else if (matcher.group().matches(COMMENT_SINGLE)) {
-                tokens.add(new Token(TokenType.COMMENT_SINGLE, matcher.group()));
-            } else if (matcher.group().matches(KEYWORDS)) {
-                tokens.add(new Token(TokenType.KEYWORD, matcher.group()));
-            } else if (matcher.group().matches(IDENTIFIERS)) {
-                tokens.add(new Token(TokenType.IDENTIFIER, matcher.group()));
-            } else if (matcher.group().matches(OPERATORS)) {
-                tokens.add(new Token(TokenType.OPERATOR, matcher.group()));
-            } else if (matcher.group().matches(NUMBERS)) {
-                tokens.add(new Token(TokenType.NUMBER, matcher.group()));
-            } else if (matcher.group().matches(PARENTHESIS)) {
-                tokens.add(new Token(TokenType.PARENTHESIS, matcher.group()));
-            } else if (matcher.group().matches(BRACES)) {
-                tokens.add(new Token(TokenType.BRACE, matcher.group()));
-            } else if (matcher.group().matches(SEMICOLON)) {
-                tokens.add(new Token(TokenType.SEMICOLON, matcher.group()));
-            } else {
-                tokens.add(new Token(TokenType.UNKNOWN, matcher.group()));
+        for (String line : lines) {
+            Matcher matcher = TOKEN_PATTERNS.matcher(line);
+
+            while (matcher.find()) {
+                String tokenValue = matcher.group();
+                TokenType tokenType = determineTokenType(tokenValue);
+
+                if (tokenType != null) {
+                    tokens.add(new Token(tokenType, tokenValue, currentLine));
+                }
             }
+            // Incrementar currentLine después de procesar cada línea
+            currentLine++;
         }
+    }
+
+    private TokenType determineTokenType(String token) {
+        if (token.matches(COMMENT_MULTI)) return TokenType.COMMENT_MULTI;
+        if (token.matches(COMMENT_SINGLE)) return TokenType.COMMENT_SINGLE;
+        if (token.matches(KEYWORDS)) return TokenType.KEYWORD;
+        if (token.matches(IDENTIFIERS)) return TokenType.IDENTIFIER;
+        if (token.matches(OPERATORS)) return TokenType.OPERATOR;
+        if (token.matches(NUMBERS)) return TokenType.NUMBER;
+        if (token.matches(PARENTHESIS)) return TokenType.PARENTHESIS;
+        if (token.matches(BRACES)) return TokenType.BRACE;
+        if (token.matches(SEMICOLON)) return TokenType.SEMICOLON;
+        return TokenType.UNKNOWN;
     }
 
     public List<Token> getTokens() {
         return tokens;
     }
 }
-
