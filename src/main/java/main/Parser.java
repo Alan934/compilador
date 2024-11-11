@@ -80,8 +80,11 @@ public class Parser {
         if (tokens.size() > index + 1 && tokens.get(index + 1).getType() == TokenType.PARENTHESIS &&
                 tokens.get(index + 1).getValue().equals("(")) {
 
+            // Verifica si el siguiente token es un identificador, entero o double (número decimal)
             if (tokens.size() > index + 2 &&
-                    (tokens.get(index + 2).getType() == TokenType.IDENTIFIER || tokens.get(index + 2).getType() == TokenType.NUMBER)) {
+                    (tokens.get(index + 2).getType() == TokenType.IDENTIFIER ||
+                            tokens.get(index + 2).getType() == TokenType.INTEGER ||
+                            tokens.get(index + 2).getType() == TokenType.DOUBLE)) {
 
                 System.out.println("Operación de E/S con: " + tokens.get(index + 2).getValue());
 
@@ -99,6 +102,7 @@ public class Parser {
             throw new RuntimeException("Error: Se esperaba '(' después de " + ioOperation);
         }
     }
+
 
     private int parseWhileStatement(List<Token> tokens, int index) {
         inLoopContext = true;
@@ -157,7 +161,8 @@ public class Parser {
         // Validar que la asignación contenga una expresión aritmética válida
         int assignmentStartIndex = index + 2;
         while (assignmentStartIndex < tokens.size() &&
-                (tokens.get(assignmentStartIndex).getType() == TokenType.NUMBER ||
+                (tokens.get(assignmentStartIndex).getType() == TokenType.INTEGER ||
+                        tokens.get(assignmentStartIndex).getType() == TokenType.DOUBLE ||
                         tokens.get(assignmentStartIndex).getType() == TokenType.OPERATOR ||
                         tokens.get(assignmentStartIndex).getType() == TokenType.IDENTIFIER)) {
             assignmentStartIndex++;
@@ -166,9 +171,8 @@ public class Parser {
         return assignmentStartIndex;
     }
 
-
     private int parseVariableDeclaration(List<Token> tokens, int index) {
-        String type = tokens.get(index).getValue();
+        String type = tokens.get(index).getValue();        // Tipo de variable (long o double)
         String identifier = tokens.get(index + 1).getValue();
 
         if (!identifier.matches("^_[a-zA-Z][a-zA-Z0-9]*$")) {
@@ -182,15 +186,15 @@ public class Parser {
             Token valueToken = tokens.get(index + 3);
 
             // Validar el tipo de valor asignado
-            if (type.equals("long") && valueToken.getType() != TokenType.NUMBER) {
+            if (type.equals("long") && valueToken.getType() == TokenType.DOUBLE) {
                 throw new RuntimeException("Error: Se esperaba un número entero para la variable 'long'.");
-            } else if (type.equals("double") && valueToken.getType() != TokenType.NUMBER) {
-                throw new RuntimeException("Error: Se esperaba un número para la variable 'double'.");
+            } else if (type.equals("double") && valueToken.getType() != TokenType.DOUBLE && valueToken.getType() != TokenType.INTEGER) {
+                throw new RuntimeException("Error: Se esperaba un número decimal para la variable 'double'.");
             }
 
-            return index + 4;
+            return index + 4;  // Avanza después de la asignación
         } else {
-            return index + 2;
+            return index + 2;  // Avanza después de la declaración sin asignación
         }
     }
 

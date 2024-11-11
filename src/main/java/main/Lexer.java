@@ -15,7 +15,8 @@ public class Lexer {
     private static final String KEYWORDS = "\\b(long|double|if|then|else|while|break|read|write)\\b";
     private static final String OPERATORS = "[+\\-*/><=]|(>=|<=|==|!=|<>)";
     private static final String IDENTIFIERS = "\\b_[a-zA-Z][a-zA-Z0-9]*\\b";
-    private static final String NUMBERS = "\\b\\d+\\b";
+    private static final String DOUBLES = "\\b\\d+\\.\\d+\\b"; // Patrón para números decimales
+    private static final String INTEGERS = "\\b\\d+\\b";       // Patrón para números enteros
     private static final String PARENTHESIS = "[()]";
     private static final String BRACES = "[{}]";
     private static final String SEMICOLON = ";";
@@ -23,7 +24,7 @@ public class Lexer {
     // Patrón combinado para buscar todos los tokens
     private static final Pattern TOKEN_PATTERNS = Pattern.compile(
             COMMENT_MULTI + "|" + COMMENT_SINGLE + "|" + KEYWORDS + "|" + IDENTIFIERS + "|" + OPERATORS + "|" +
-                    NUMBERS + "|" + PARENTHESIS + "|" + BRACES + "|" + SEMICOLON);
+                    DOUBLES + "|" + INTEGERS + "|" + PARENTHESIS + "|" + BRACES + "|" + SEMICOLON);
 
     public void tokenize(String input) {
         // Separar el input en líneas
@@ -40,7 +41,6 @@ public class Lexer {
                     tokens.add(new Token(tokenType, tokenValue, currentLine));
                 }
             }
-            // Incrementar currentLine después de procesar cada línea
             currentLine++;
         }
     }
@@ -51,7 +51,8 @@ public class Lexer {
         if (token.matches(KEYWORDS)) return TokenType.KEYWORD;
         if (token.matches(IDENTIFIERS)) return TokenType.IDENTIFIER;
         if (token.matches(OPERATORS)) return TokenType.OPERATOR;
-        if (token.matches(NUMBERS)) return TokenType.NUMBER;
+        if (token.matches(DOUBLES)) return TokenType.DOUBLE;
+        if (token.matches(INTEGERS)) return TokenType.INTEGER;
         if (token.matches(PARENTHESIS)) return TokenType.PARENTHESIS;
         if (token.matches(BRACES)) return TokenType.BRACE;
         if (token.matches(SEMICOLON)) return TokenType.SEMICOLON;

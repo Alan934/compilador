@@ -6,6 +6,8 @@ public enum TokenType {
     KEYWORD, //Palabras clave reservadas: `long`, `double`, `if`, `while`, `break`, `read`, `write`
     IDENTIFIER, //Identificadores:  `_var`, `_contador`
     OPERATOR, //Operadores aritméticos, de comparación y lógicos: `+`, `-`, `*`, `/`, `>`, `<`, `>=`, `<=`, `==`, `!=`
+    INTEGER,  // Para números enteros
+    DOUBLE, //Para numeros reales
     NUMBER, //Números enteros y decimales
     PARENTHESIS, //Paréntesis utilizados para agrupar expresiones o definir condiciones
     BRACE, //Llaves utilizadas para definir bloques de código: `{`, `}`
